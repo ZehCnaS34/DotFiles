@@ -11,5 +11,5 @@ dest = path.expanduser('~/.emacs.d')
 try:
     os.symlink(src, dest)
 except Exception as e:
-    pass
+    print("Could not link emacs")
 
