@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+from os import path
+import os
+
+src = path.join(os.path.abspath(os.curdir), 'kak')
+dest = path.expanduser('~/.config/kak')
+
+try:
+    os.symlink(src, dest)
+except Exception as e:
+    print('kak already there')

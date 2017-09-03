@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+
+
+from os import path
+import os
+
+
+src = path.join(os.path.abspath(os.curdir), 'emacs')
+dest = path.expanduser('~/.emacs.d')
+
+try:
+    os.symlink(src, dest)
+except Exception as e:
+    pass
+

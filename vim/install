@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+
+from os import path
+import os 
+
+src = path.join(os.path.abspath(os.curdir), 'vim')
+dest = path.expanduser('~/.vim')
+
+try:
+    os.symlink(src, dest)
+except Exception as e:
+    pass
+
+src = path.join(os.path.abspath(os.curdir), 'vim/vimrc')
+dest = path.expanduser('~/.vimrc')
+
+try:
+    os.symlink(src, dest)
+except Exception as e:
+    pass
+

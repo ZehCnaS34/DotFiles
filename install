@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+
+import sys
+import os
+from os import path
+import subprocess
+
+
+print("Installing ZehCnaS's config")
+
+blacklist = [
+    ".git",
+]
+
+
+for node in os.listdir(os.curdir):
+    if os.path.isdir(node) and node not in blacklist:
+        install_file = path.join(os.curdir, node, 'install')
+        args = ('python3', install_file)
+        popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+        popen.wait()
+        output = popen.stdout.read()

@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+import os
+from os import path
+
+src = path.join(os.path.abspath(os.curdir), 'tmux/tmux.conf')
+dest = path.expanduser('~/.tmux.conf')
+
+try:
+    os.symlink(src, dest)
+except Exception as e:
+    print("tmux already there")
+
