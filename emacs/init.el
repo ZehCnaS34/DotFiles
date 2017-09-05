@@ -18,17 +18,25 @@
 (set-face-attribute 'default nil :font "source code pro-13")
 (set-frame-font "source code pro-13" nil t)
 
-(setq packages '(magit
-		 projectile
-		 markdown-mode
-		 editorconfig
-		 zenburn
-		 evil
-		 js2-mode
-		 smartparens
-		 helm
+(setq packages '(
 		 company
-		 use-package))
+		 company-jedi
+		 editorconfig
+		 evil
+		 grizzl
+		 helm
+		 helm-projectile
+		 js2-mode
+		 magit
+		 markdown-mode
+		 prodigy
+		 projectile
+		 pyvenv
+		 rjsx-mode
+		 smartparens
+		 use-package
+		 zenburn
+		 ))
 
 (mapcar #'package-install packages)
 
@@ -39,6 +47,10 @@
 (use-package projectile
   :config
   (projectile-mode +1))
+
+(use-package helm-projectile
+  :config
+  (helm-projectile-on))
 
 (use-package zenburn-theme
   :config
@@ -51,6 +63,7 @@
   (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
   (add-hook 'js2-mode-hook #'smartparens-mode)
   (add-hook 'python-mode-hook #'smartparens-mode)
+  (add-hook 'rjsx-mode-hook #'smartparens-mode)
   )
 
 (use-package editorconfig
@@ -60,7 +73,8 @@
 
 (use-package company
   :config
-  (global-company-mode t))
+  (global-company-mode t)
+  (add-to-list 'company-backends '(company-jedi company-files)))
 
 (use-package js2-mode
   :config
