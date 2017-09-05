@@ -15,10 +15,12 @@
 (tool-bar-mode -1)
 (setq inhibit-startup-screen t)
 (setq ring-bell-function 'ignore)
-(set-face-attribute 'default nil :font "source code pro-13")
-(set-frame-font "source code pro-13" nil t)
+(set-face-attribute 'default nil :font "source code pro-12")
+(set-frame-font "source code pro-12" nil t)
+
 
 (setq packages '(
+		 ace-jump-mode
 		 company
 		 company-jedi
 		 editorconfig
@@ -64,6 +66,7 @@
   (add-hook 'js2-mode-hook #'smartparens-mode)
   (add-hook 'python-mode-hook #'smartparens-mode)
   (add-hook 'rjsx-mode-hook #'smartparens-mode)
+  (add-hook 'ruby-mode-hook #'smartparens-mode)
   )
 
 (use-package editorconfig
@@ -79,3 +82,7 @@
 (use-package js2-mode
   :config
   (add-to-list 'auto-mode-alist '("\.js'" . js2-mode)))
+
+(use-package ace-jump-mode
+  :config
+  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
