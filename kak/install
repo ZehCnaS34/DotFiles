@@ -8,4 +8,4 @@ dest = path.expanduser('~/.config/kak')
 try:
     os.symlink(src, dest)
 except Exception as e:
-    print('kak already there')
+    print("Could not link kak directory")

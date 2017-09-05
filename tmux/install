@@ -9,5 +9,5 @@ dest = path.expanduser('~/.tmux.conf')
 try:
     os.symlink(src, dest)
 except Exception as e:
-    print("tmux already there")
+    print("Could not link tmux file")
 

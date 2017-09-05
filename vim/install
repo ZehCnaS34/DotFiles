@@ -9,7 +9,7 @@ dest = path.expanduser('~/.vim')
 try:
     os.symlink(src, dest)
 except Exception as e:
-    pass
+    print("Could not link vim directory")
 
 src = path.join(os.path.abspath(os.curdir), 'vim/vimrc')
 dest = path.expanduser('~/.vimrc')
@@ -17,5 +17,5 @@ dest = path.expanduser('~/.vimrc')
 try:
     os.symlink(src, dest)
 except Exception as e:
-    pass
+    print("Could not link vimrc")
 
