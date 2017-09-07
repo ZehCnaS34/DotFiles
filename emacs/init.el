@@ -1,6 +1,7 @@
 ;; core
 (setq custom-file "~/.emacs.d/custom.el")
 
+(setq backup-directory-alist `(("." . "~/.saves")))
 
 ;; initialize package
 (require 'package)
@@ -23,8 +24,10 @@
 		 ace-jump-mode
 		 company
 		 company-jedi
+		 dockerfile-mode
 		 editorconfig
 		 evil
+		 evil-leader
 		 grizzl
 		 helm
 		 helm-projectile
@@ -37,14 +40,46 @@
 		 rjsx-mode
 		 smartparens
 		 use-package
-		 zenburn
+		 zenburn-theme
 		 ))
 
 (mapcar #'package-install packages)
 
 (use-package evil
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  (use-package evil-leader
+    :config
+    (global-evil-leader-mode)
+    (evil-leader/set-leader "<SPC>")
+
+    (evil-leader/set-key
+      "<SPC>" 'helm-M-x
+
+      ;; files
+      "ff" 'helm-find-files
+
+      ;; projectile
+      "pf" 'helm-projectile-find-file
+      "pp" 'helm-projectile-switch-project
+      "pd" 'helm-projectile-dired-find-dir
+
+      ;; window
+      "wl" 'evil-window-right
+      "wh" 'evil-window-left
+      "wj" 'evil-window-down
+      "wk" 'evil-window-up
+      "ws" 'evil-window-split
+      "wv" 'evil-window-vsplit
+      "wd" 'evil-window-delete
+
+      ;; buffer
+      "bd" 'evil-delete-buffer
+      "bb" 'helm-buffers-list
+
+      ;; magit
+      "gs" 'magit-status
+      )))
 
 (use-package projectile
   :config
@@ -79,9 +114,9 @@
   (global-company-mode t)
   (add-to-list 'company-backends '(company-jedi company-files)))
 
-(use-package js2-mode
+(use-package rjsx-mode
   :config
-  (add-to-list 'auto-mode-alist '("\.js'" . js2-mode)))
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode)))
 
 (use-package ace-jump-mode
   :config

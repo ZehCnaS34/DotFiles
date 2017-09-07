@@ -5,3 +5,4 @@ emacs/auto-save-list/
 emacs/elpa/
 emacs/*.data
 emacs/*.eld
+vim/undodir

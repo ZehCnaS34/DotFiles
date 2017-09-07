@@ -51,8 +51,8 @@ call plug#end()            " required
 " Syntax
 filetype plugin indent on
 syntax enable
-set background=dark
-" colorscheme xoria256
+set background=light
+colorscheme gruvbox
 set t_Co=256
 if &term =~ '256color'
   set t_ut=
@@ -165,3 +165,11 @@ function! g:CleanTemps()
   execute "!" . "rm -rf ~/.tmp/*.swp"
 endfunction
 
+
+let vimDir = '$HOME/.vim'
+if has('persistent_undo')
+  let myUndoDir = expand(vimDir . '/undodir')
+  call system('mkdir ' . myUndoDir)
+  let &undodir = myUndoDir
+  set undofile
+end
