@@ -28,6 +28,7 @@
 		 editorconfig
 		 evil
 		 evil-leader
+		 evil-exchange
 		 grizzl
 		 helm
 		 helm-projectile
@@ -37,6 +38,7 @@
 		 prodigy
 		 projectile
 		 pyvenv
+		 rainbow-delimiters
 		 rjsx-mode
 		 smartparens
 		 use-package
@@ -48,6 +50,11 @@
 (use-package evil
   :config
   (evil-mode 1)
+  (use-package evil-exchange
+    :init
+    (setq evil-exchange-key (kbd "zx"))
+    :config
+    (evil-exchange-install))
   (use-package evil-leader
     :config
     (global-evil-leader-mode)
@@ -79,45 +86,56 @@
 
       ;; magit
       "gs" 'magit-status
-      )))
+      )
+    )
+  )
 
 (use-package projectile
   :config
-  (projectile-mode +1))
+  (projectile-mode +1)
+  )
 
 (use-package helm-projectile
   :config
-  (helm-projectile-on))
+  (helm-projectile-on)
+  )
 
 (use-package zenburn-theme
   :config
-  (load-theme 'zenburn t))
+  (load-theme 'zenburn t)
+  )
 
 (use-package smartparens
   :init
   (require 'smartparens-config)
   :config
-  (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
-  (add-hook 'js2-mode-hook #'smartparens-mode)
-  (add-hook 'python-mode-hook #'smartparens-mode)
-  (add-hook 'rjsx-mode-hook #'smartparens-mode)
-  (add-hook 'ruby-mode-hook #'smartparens-mode)
+  (add-hook 'prog-mode-hook #'smartparens-mode)
   )
 
 (use-package editorconfig
   :ensure t
   :config
-  (editorconfig-mode 1))
+  (editorconfig-mode 1)
+  )
 
 (use-package company
   :config
   (global-company-mode t)
-  (add-to-list 'company-backends '(company-jedi company-files)))
+  (add-to-list 'company-backends '(company-jedi company-files))
+  )
 
 (use-package rjsx-mode
   :config
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode)))
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+  )
 
 (use-package ace-jump-mode
   :config
-  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
+  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+  )
+
+(use-package rainbow-delimiters
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+  )

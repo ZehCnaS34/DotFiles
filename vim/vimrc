@@ -11,6 +11,8 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'Valloric/YouCompleteMe'
+Plug 'flazz/vim-colorschemes'
+Plug 'tommcdo/vim-exchange'
 Plug 'airblade/vim-gitgutter'
 Plug 'aklt/plantuml-syntax'
 Plug 'Vimjas/vim-python-pep8-indent'
@@ -52,7 +54,7 @@ call plug#end()            " required
 filetype plugin indent on
 syntax enable
 set background=light
-colorscheme gruvbox
+colorscheme solarized
 set t_Co=256
 if &term =~ '256color'
   set t_ut=
