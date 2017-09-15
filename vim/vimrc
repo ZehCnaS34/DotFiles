@@ -54,7 +54,7 @@ call plug#end()            " required
 filetype plugin indent on
 syntax enable
 set background=light
-colorscheme solarized
+colorscheme gruvbox
 set t_Co=256
 if &term =~ '256color'
   set t_ut=
@@ -142,6 +142,7 @@ nnoremap <Leader>wl <C-w>l
 nnoremap <Leader>ws <C-w>s
 nnoremap <Leader>wv <C-w>v
 nnoremap <Leader>ww <C-w>z
+nnoremap <Leader>w= <C-w>=
 
 nnore <Leader>Tb :Tagbar<cr>
 
@@ -175,3 +176,5 @@ if has('persistent_undo')
   let &undodir = myUndoDir
   set undofile
 end
+
+noremap <Leader>rl :w<Bar>execute 'silent !tmux send-keys -t bottom C-r'<Bar>redraw!<C-M>
