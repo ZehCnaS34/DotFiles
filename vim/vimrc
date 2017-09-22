@@ -11,21 +11,22 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'Valloric/YouCompleteMe'
-Plug 'flazz/vim-colorschemes'
-Plug 'tommcdo/vim-exchange'
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'airblade/vim-gitgutter'
 Plug 'aklt/plantuml-syntax'
-Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'benekastah/neomake'
 Plug 'bhurlow/vim-parinfer'
+Plug 'bling/vim-airline'
 Plug 'digitaltoad/vim-pug'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'fatih/vim-go'
+Plug 'flazz/vim-colorschemes'
 Plug 'guns/vim-clojure-static'
 Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
+Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -42,6 +43,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/gundo.vim'
 Plug 'tommcdo/vim-exchange'
+Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
@@ -53,8 +55,8 @@ call plug#end()            " required
 " Syntax
 filetype plugin indent on
 syntax enable
-set background=light
-colorscheme gruvbox
+" set background=light
+" colorscheme gruvbox
 set t_Co=256
 if &term =~ '256color'
   set t_ut=
@@ -178,3 +180,28 @@ if has('persistent_undo')
 end
 
 noremap <Leader>rl :w<Bar>execute 'silent !tmux send-keys -t bottom C-r'<Bar>redraw!<C-M>
+
+function! ShowSpaces(...)
+  let @/='\v(\s+$)|( +\ze\t)'
+  let oldhlsearch=&hlsearch
+  if !a:0
+    let &hlsearch=!&hlsearch
+  else
+    let &hlsearch=a:1
+  end
+  return oldhlsearch
+endfunction
+
+function! TrimSpaces() range
+  let oldhlsearch=ShowSpaces(1)
+  execute a:firstline.",".a:lastline."substitute ///gec"
+  let &hlsearch=oldhlsearch
+endfunction
+
+command -bar -nargs=? ShowSpaces call ShowSpaces(<args>)
+command -bar -nargs=0 -range=% TrimSpaces <line1>,<line2>call TrimSpaces()
+nnoremap <F8>     :ShowSpaces 1<CR>
+nnoremap <C-F8>   m`:TrimSpaces<CR>``
+vnoremap <C-F8>   :TrimSpaces<CR>
+
+let g:slime_target = "tmux"
