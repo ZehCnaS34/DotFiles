@@ -1,4 +1,4 @@
-# colorscheme zenburn 
+colorscheme zenburn 
 
 def ide %{
     rename-client main
@@ -39,4 +39,11 @@ fzf-buffer %{ %sh{
 
 map global user f :fzf-file<ret>
 
-map global user r :source<space>/home/alex/.config/kak/kakrc<ret>
+# map global user r :source<space>/home/alex/.config/kak/kakrc<ret>
+
+# set global ycmd_path "~/.vim/plugged/YouCompleteMe/"
+
+# hook global WinSetOption filetype=cpp %{ ycmd-enable-autocomplete }
+# hook global WinSetOption filetype=(?!cpp).* %{ ycmd-disable-autocomplete }
+
+

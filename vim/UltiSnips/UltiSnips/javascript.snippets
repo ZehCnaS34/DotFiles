@@ -1,0 +1,16 @@
+snippet recomp
+class ${1:Name} extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {$2};$3
+	}
+
+	render() {
+		return (
+			<div>
+				$0
+			</div>
+		);
+	}
+}
+endsnippet

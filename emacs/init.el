@@ -6,8 +6,8 @@
 ;; initialize package
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
+			 ("marmalade" . "https://marmalade-repo.org/packages/")
+			 ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 (if (not (file-exists-p "~/.emacs.d/elpa"))
     (package-refresh-contents))
@@ -27,8 +27,8 @@
 		 dockerfile-mode
 		 editorconfig
 		 evil
-		 evil-leader
 		 evil-exchange
+		 evil-leader
 		 grizzl
 		 helm
 		 helm-projectile
@@ -38,8 +38,10 @@
 		 prodigy
 		 projectile
 		 pyvenv
+		 racer
 		 rainbow-delimiters
 		 rjsx-mode
+		 rust-mode
 		 smartparens
 		 use-package
 		 zenburn-theme
@@ -100,9 +102,9 @@
   (helm-projectile-on)
   )
 
-(use-package zenburn-theme
+(use-package gruvbox-theme
   :config
-  (load-theme 'zenburn t)
+  (load-theme 'gruvbox t)
   )
 
 (use-package smartparens

@@ -1,0 +1,22 @@
+snippet imcomp
+$1class ${2:Name} extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {$3};$4
+	}
+
+	render() {
+		return (
+			<div>$0</div>
+		);
+	}
+}
+endsnippet
+
+snippet pucomp
+$1const ${2:Name} = ($3) => {
+	return (
+		<div>$0</div>
+	);
+}
+endsnippet
