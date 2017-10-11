@@ -22,6 +22,8 @@
 
 (setq packages '(
 		 ace-jump-mode
+		 clojure-mode
+		 julia-mode
 		 company
 		 company-jedi
 		 dockerfile-mode
