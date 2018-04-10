@@ -10,7 +10,7 @@
 "
 " Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'Valloric/YouCompleteMe'
+Plug 'JuliaEditorSupport/julia-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
@@ -44,13 +44,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()            " required
 
 " Syntax
 filetype plugin indent on
 syntax enable
 set background=dark
-colorscheme gruvbox
+" colorscheme gruvbox
+" colorscheme desert
+" colorscheme zenburn
+colorscheme solarized
+
 set t_Co=256
 if &term =~ '256color'
   set t_ut=
@@ -60,7 +66,7 @@ endif
 " Setters
 set nocompatible
 if has('gui_running')
-  set guifont=Fira\ Mono\ 13
+  set guifont=IBM\ Plex\ Mono\ 14
 endif
 set dir=~/.tmp
 set expandtab
@@ -189,7 +195,7 @@ endfunction
 
 function! TrimSpaces() range
   let oldhlsearch=ShowSpaces(1)
-  execute a:firstline.",".a:lastline."substitute ///gec"
+  execute a:firstline.",".a:lastline."substitute ///ge"
   let &hlsearch=oldhlsearch
 endfunction
 
@@ -201,18 +207,24 @@ vnoremap <C-F8>   :TrimSpaces<CR>
 
 let g:slime_target = "tmux"
 
+let $FZF_DEFAULT_COMMAND="ag -g ''"
+
+au BufWrite <buffer> call TrimSpaces()
+
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsJumpForwardTrigger="<c-n>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="horizontal"
+" " If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="horizontal"
 
 
-let g:UltiSnipsExpandTrigger="<c-space>"
-let g:UltiSnipsJumpForwardTrigger="<c-space>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsExpandTrigger="<c-space>"
+" let g:UltiSnipsJumpForwardTrigger="<c-space>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-let g:UltiSnipsSnippetsDir='~/.vim/UltiSnips'
-let g:UltiSnipsUsePythonVersion = 3
+" let g:UltiSnipsSnippetsDir='~/.vim/UltiSnips'
+" let g:UltiSnipsUsePythonVersion = 3
+
+let g:airline#extensions#tabline#enabled = 1

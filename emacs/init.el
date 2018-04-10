@@ -16,7 +16,7 @@
 (tool-bar-mode -1)
 (setq inhibit-startup-screen t)
 (setq ring-bell-function 'ignore)
-(set-face-attribute 'default nil :font "source code pro-12")
+(set-face-attribute 'default nil :font "inconsolata-12")
 (set-frame-font "source code pro-12" nil t)
 
 
