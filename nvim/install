@@ -2,6 +2,7 @@
 
 from os import path
 import os 
+import subprocess
 
 src = path.join(os.path.abspath(os.curdir), 'nvim')
 dest = path.expanduser('~/.config/nvim')
@@ -9,10 +10,7 @@ dest = path.expanduser('~/.config/nvim')
 try:
     os.symlink(src, dest)
 except Exception as e:
-    print("Could not link vim directory")
-
-src = path.join(os.path.abspath(os.curdir), 'nvim/init.vim')
-dest = path.expanduser('~/.nvimrc')
+    print("Could not link nvim directory %s" % e)
 
 try:
     os.symlink(src, dest)
