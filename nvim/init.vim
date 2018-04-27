@@ -51,10 +51,10 @@ call plug#end()            " required
 " Syntax
 filetype plugin indent on
 syntax enable
-set background=dark
+set background=light
 " colorscheme gruvbox
-" colorscheme desert
-colorscheme zenburn
+colorscheme desert
+" colorscheme zenburn
 set t_Co=256
 if &term =~ '256color'
   set t_ut=

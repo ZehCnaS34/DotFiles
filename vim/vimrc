@@ -10,7 +10,6 @@
 "
 " Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'JuliaEditorSupport/julia-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
