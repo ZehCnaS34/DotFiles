@@ -10,7 +10,6 @@
 "
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'JuliaEditorSupport/julia-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
@@ -21,7 +20,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
-Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
 Plug 'jpalardy/vim-slime'
 Plug 'jparise/vim-graphql'
@@ -36,7 +34,10 @@ Plug 'pangloss/vim-javascript'
 Plug 'rking/ag.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
+<<<<<<< HEAD
 Plug 'sirver/UltiSnips'
+=======
+>>>>>>> aa5afe57c9b194408f5969e277efd42ee0b949b1
 Plug 'sjl/gundo.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
@@ -44,17 +45,25 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+<<<<<<< HEAD
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+=======
+>>>>>>> aa5afe57c9b194408f5969e277efd42ee0b949b1
 call plug#end()            " required
 
 " Syntax
 filetype plugin indent on
 syntax enable
+<<<<<<< HEAD
 set background=light
 " colorscheme gruvbox
 colorscheme desert
 " colorscheme zenburn
+=======
+set background=dark
+colorscheme gruvbox
+>>>>>>> aa5afe57c9b194408f5969e277efd42ee0b949b1
 set t_Co=256
 if &term =~ '256color'
   set t_ut=
@@ -64,7 +73,11 @@ endif
 " Setters
 set nocompatible
 if has('gui_running')
+<<<<<<< HEAD
   set guifont=IBM\ Plex\ Mono\ 14
+=======
+  set guifont=Fira\ Mono\ 13
+>>>>>>> aa5afe57c9b194408f5969e277efd42ee0b949b1
 endif
 set dir=~/.tmp
 set expandtab
@@ -136,6 +149,10 @@ nnore <Leader>gc :Commits<cr>
 
 " window
 nnoremap <Leader>wd <C-w>c
+<<<<<<< HEAD
+=======
+nnoremap <Leader>Wd :close!<cr>
+>>>>>>> aa5afe57c9b194408f5969e277efd42ee0b949b1
 nnoremap <Leader>wh <C-w>h
 nnoremap <Leader>wj <C-w>j
 nnoremap <Leader>wk <C-w>k
@@ -193,7 +210,11 @@ endfunction
 
 function! TrimSpaces() range
   let oldhlsearch=ShowSpaces(1)
+<<<<<<< HEAD
   execute a:firstline.",".a:lastline."substitute ///ge"
+=======
+  execute a:firstline.",".a:lastline."substitute ///gec"
+>>>>>>> aa5afe57c9b194408f5969e277efd42ee0b949b1
   let &hlsearch=oldhlsearch
 endfunction
 
@@ -204,9 +225,12 @@ nnoremap <C-F8>   m`:TrimSpaces<CR>``
 vnoremap <C-F8>   :TrimSpaces<CR>
 
 let g:slime_target = "tmux"
+<<<<<<< HEAD
 
 let $FZF_DEFAULT_COMMAND="ag -g ''"
 
 au BufWrite <buffer> call TrimSpaces()
 
 let g:airline#extensions#tabline#enabled = 1
+=======
+>>>>>>> aa5afe57c9b194408f5969e277efd42ee0b949b1
