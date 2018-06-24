@@ -11,9 +11,10 @@
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
-Plug 'benekastah/neomake'
-Plug 'bhurlow/vim-parinfer'
+Plug 'bhurlow/vim-parinfer', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'digitaltoad/vim-pug'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
@@ -21,8 +22,8 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
 Plug 'jiangmiao/auto-pairs'
-Plug 'jpalardy/vim-slime'
-Plug 'jparise/vim-graphql'
+Plug 'jpalardy/vim-slime', { 'for': 'clojure' }
+Plug 'jparise/vim-graphql', { 'for': ['javascript', 'graphql'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -41,16 +42,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 call plug#end()            " required
 
 " Syntax
 filetype plugin indent on
 syntax enable
 set background=light
-" colorscheme gruvbox
-colorscheme desert
+colorscheme gruvbox
+" colorscheme desert
 " colorscheme zenburn
 set t_Co=256
 if &term =~ '256color'
@@ -154,6 +153,11 @@ nnoremap <Leader>qQ :qall<cr>
 nnoremap ,m :Neomake<cr>
 
 nnore [s :call <SID>SynStack()<CR>
+
+" Folding
+nore z[ va[zf
+nore z{ va{zf
+nore z( va(zf
 
 " functions
 function! <SID>SynStack()
