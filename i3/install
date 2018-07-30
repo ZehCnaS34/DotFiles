@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+
+from os import path
+import os 
+import subprocess
+
+src = path.join(os.path.abspath(os.curdir), 'i3')
+dest = path.expanduser('~/.config/i3')
+
+try:
+    os.symlink(src, dest)
+except Exception as e:
+    print("Could not link nvim directory %s" % e)
+
+try:
+    os.symlink(src, dest)
+except Exception as e:
+    print("Could not link nvimrc")
+
