@@ -10,16 +10,17 @@
 "
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'AndrewRadev/linediff.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
+Plug 'benmills/vimux' "Interact with tmux from vim
 Plug 'bhurlow/vim-parinfer', { 'for': 'clojure' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'digitaltoad/vim-pug'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'fatih/vim-go'
+Plug 'fenetikm/falcon'
 Plug 'flazz/vim-colorschemes'
 Plug 'jiangmiao/auto-pairs'
 Plug 'jpalardy/vim-slime', { 'for': 'clojure' }
@@ -27,30 +28,43 @@ Plug 'jparise/vim-graphql', { 'for': ['javascript', 'graphql'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
+Plug 'kshenoy/vim-signature'
 Plug 'leafgarland/typescript-vim'
+Plug 'lilydjwg/colorizer'
 Plug 'majutsushi/tagbar'
+Plug 'mfukar/robotframework-vim'
+Plug 'mhinz/vim-startify' "startify
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'rking/ag.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'sjl/gundo.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tyewang/vimux-jest-test'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
+Plug 'wincent/ferret'
+Plug 'wincent/loupe'
 call plug#end()            " required
 
 " Syntax
 filetype plugin indent on
 syntax enable
-set background=light
-colorscheme gruvbox
-" colorscheme desert
-" colorscheme zenburn
+set background=dark
+set termguicolors
+colorscheme falcon
+
 set t_Co=256
 if &term =~ '256color'
   set t_ut=
@@ -74,9 +88,27 @@ set so=7
 set swapfile
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*.png,*.jpg
 set showtabline=1
+set lbr
+
+set list                              " show whitespace
+set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
+" + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
+set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
+set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
+set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
+
+"folding stuff
+set fillchars=vert:┃
+set fillchars+=fold:
+set foldmethod=indent "indent method
+set foldlevelstart=99 "start unfolded
+
+set synmaxcol=800                     " Don't try to highlight lines longer than 800 characters.
+
 
 " lets
-let mapleader=" "
+let mapleader=","
 let g:jsx_ext_required = 0
 
 " Autocommands
@@ -153,6 +185,8 @@ nnoremap <Leader>qQ :qall<cr>
 nnoremap ,m :Neomake<cr>
 
 nnore [s :call <SID>SynStack()<CR>
+
+set cursorline
 
 " Folding
 nore z[ va[zf

@@ -1,4 +1,3 @@
-colorscheme zenburn 
 
 def ide %{
     rename-client main
@@ -38,12 +37,20 @@ fzf-buffer %{ %sh{
 
 
 map global user f :fzf-file<ret>
+map global user b :fzf-buffer<ret>
+map global user r :source<space>/home/alex/.config/kak/kakrc<ret>
 
-# map global user r :source<space>/home/alex/.config/kak/kakrc<ret>
+hook global BufCreate .*\.(js|jsx) %{
+     set buffer formatcmd 'prettier --parser babylon'
+     add-highlighter buffer number_lines
+     set buffer tabstop 2
+     set buffer grepcmd 'ag --ignore=node_modules --ignore=dist/* --ignore=bundle.js --ignore=*.min.js'
+}
 
-# set global ycmd_path "~/.vim/plugged/YouCompleteMe/"
+hook global BufWritePost .*\.(js|jsx) %{
+    git status
+}
 
-# hook global WinSetOption filetype=cpp %{ ycmd-enable-autocomplete }
-# hook global WinSetOption filetype=(?!cpp).* %{ ycmd-disable-autocomplete }
-
-
+hook global BufWritePre .*\.(js|jsx) %{
+    format
+}
