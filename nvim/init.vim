@@ -10,49 +10,34 @@
 "
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'AndrewRadev/linediff.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'airblade/vim-gitgutter'
-Plug 'benmills/vimux' "Interact with tmux from vim
-Plug 'bhurlow/vim-parinfer', { 'for': 'clojure' }
 Plug 'digitaltoad/vim-pug'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'elixir-lang/vim-elixir'
-Plug 'fatih/vim-go'
-Plug 'fenetikm/falcon'
 Plug 'flazz/vim-colorschemes'
 Plug 'jiangmiao/auto-pairs'
-Plug 'jpalardy/vim-slime', { 'for': 'clojure' }
-Plug 'jparise/vim-graphql', { 'for': ['javascript', 'graphql'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kshenoy/vim-signature'
-Plug 'leafgarland/typescript-vim'
 Plug 'lilydjwg/colorizer'
 Plug 'majutsushi/tagbar'
 Plug 'mfukar/robotframework-vim'
-Plug 'mhinz/vim-startify' "startify
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
 Plug 'rking/ag.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-vinegar'
 Plug 'sheerun/vim-polyglot'
 Plug 'sjl/gundo.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tyewang/vimux-jest-test'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'wincent/ferret'
 Plug 'wincent/loupe'
@@ -61,9 +46,9 @@ call plug#end()            " required
 " Syntax
 filetype plugin indent on
 syntax enable
-set background=dark
+set background=light
 set termguicolors
-colorscheme falcon
+colorscheme github
 
 set t_Co=256
 if &term =~ '256color'
@@ -80,7 +65,7 @@ set dir=~/.tmp
 set expandtab
 set wildmenu
 set guioptions-=T guioptions-=m
-set laststatus=2 cmdheight=2 ruler nu rnu ignorecase hlsearch magic noeb t_vb= tm=500
+set laststatus=0 cmdheight=2 ruler ignorecase hlsearch magic noeb t_vb= tm=500
 set regexpengine=1
 set shiftwidth=2 tabstop=2 softtabstop=2 smartindent
 set mouse=a
@@ -101,14 +86,15 @@ set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
 "folding stuff
 set fillchars=vert:┃
 set fillchars+=fold:
-set foldmethod=indent "indent method
+" set foldmethod=indent "indent method
+set foldmethod=manual "indent method
 set foldlevelstart=99 "start unfolded
 
 set synmaxcol=800                     " Don't try to highlight lines longer than 800 characters.
 
 
 " lets
-let mapleader=","
+let mapleader=" "
 let g:jsx_ext_required = 0
 
 " Autocommands
@@ -118,7 +104,7 @@ autocmd BufNewFile,BufReadPost Procfile set filetype=ruby
 nmap <c-\> :NERDTreeToggle<cr>
 nmap <m-\> :Tagbar<cr>
 
-nnore <Leader><Leader> :Commands<cr>
+" nnore <Leader><Leader> :Commands<cr>
 nnore <C-p> :Files<space>.<cr>
 nnore <Leader>pf :Files<cr>
 nnore <Leader>pb :Buffers<cr>
@@ -180,13 +166,14 @@ nnore <Leader>Tb :Tagbar<cr>
 nnoremap <Leader>/ :Lines<cr>
 
 " Quiting/Restarting
+inoremap fd <C-[>
 nnoremap <Leader>qq :q<cr>
 nnoremap <Leader>qQ :qall<cr>
 nnoremap ,m :Neomake<cr>
 
 nnore [s :call <SID>SynStack()<CR>
 
-set cursorline
+" set cursorline
 
 " Folding
 nore z[ va[zf
@@ -245,4 +232,7 @@ let $FZF_DEFAULT_COMMAND="ag -g ''"
 
 au BufWrite <buffer> call TrimSpaces()
 
-let g:airline#extensions#tabline#enabled = 1
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+" let g:ale_fix_on_save = 1
+

@@ -1,3 +1,4 @@
+colorscheme tomorrow-night
 
 def ide %{
     rename-client main
@@ -36,9 +37,13 @@ fzf-buffer %{ %sh{
 } }
 
 
-map global user f :fzf-file<ret>
-map global user b :fzf-buffer<ret>
-map global user r :source<space>/home/alex/.config/kak/kakrc<ret>
+# my configuration
+set global tabstop 4
+
+
+map -docstring "FZF File" global user f :fzf-file<ret>
+map -docstring "FZF Buffer" global user b :fzf-buffer<ret>
+map -docstring "Source Configuration" global user r :source<space>${HOME}/.config/kak/kakrc<ret>
 
 hook global BufCreate .*\.(js|jsx) %{
      set buffer formatcmd 'prettier --parser babylon'
@@ -54,3 +59,9 @@ hook global BufWritePost .*\.(js|jsx) %{
 hook global BufWritePre .*\.(js|jsx) %{
     format
 }
+
+hook global WinCreate .*\.* %{
+  source .kak
+}
+
+

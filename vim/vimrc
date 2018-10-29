@@ -12,30 +12,22 @@
 call plug#begin('~/.vim/plugged')
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'airblade/vim-gitgutter'
-Plug 'benekastah/neomake'
-Plug 'bhurlow/vim-parinfer'
 Plug 'digitaltoad/vim-pug'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'elixir-lang/vim-elixir'
-Plug 'fatih/vim-go'
-Plug 'flazz/vim-colorschemes'
-Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
-Plug 'jpalardy/vim-slime'
-Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
-Plug 'leafgarland/typescript-vim'
+Plug 'kshenoy/vim-signature'
+Plug 'lilydjwg/colorizer'
 Plug 'majutsushi/tagbar'
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
+Plug 'mfukar/robotframework-vim'
 Plug 'rking/ag.vim'
-Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'sirver/UltiSnips'
+Plug 'sheerun/vim-polyglot'
 Plug 'sjl/gundo.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
@@ -43,18 +35,17 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'tyewang/vimux-jest-test'
+Plug 'w0rp/ale'
+Plug 'wincent/ferret'
+Plug 'wincent/loupe'
 call plug#end()            " required
 
 " Syntax
 filetype plugin indent on
 syntax enable
 set background=dark
-" colorscheme gruvbox
-" colorscheme desert
-" colorscheme zenburn
-colorscheme solarized
+
 
 set t_Co=256
 if &term =~ '256color'
@@ -65,7 +56,12 @@ endif
 " Setters
 set nocompatible
 if has('gui_running')
-  set guifont=IBM\ Plex\ Mono\ 14
+  " set guifont=IBM\ Plex\ Mono\ 14
+  set guifont=Dank\ Mono:h12
+  set bg=light
+  colorscheme macvim
+else
+  colorscheme koehler
 endif
 set dir=~/.tmp
 set expandtab
@@ -156,6 +152,10 @@ nnoremap <Leader>qq :q<cr>
 nnoremap <Leader>qQ :qall<cr>
 nnoremap ,m :Neomake<cr>
 
+" terminal
+inoremap <C-`> :terminal<cr>
+nnoremap <C-`> :terminal<cr>
+
 nnore [s :call <SID>SynStack()<CR>
 
 " functions
@@ -210,20 +210,3 @@ let $FZF_DEFAULT_COMMAND="ag -g ''"
 
 au BufWrite <buffer> call TrimSpaces()
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-n>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-
-" " If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="horizontal"
-
-
-" let g:UltiSnipsExpandTrigger="<c-space>"
-" let g:UltiSnipsJumpForwardTrigger="<c-space>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" let g:UltiSnipsSnippetsDir='~/.vim/UltiSnips'
-" let g:UltiSnipsUsePythonVersion = 3
-
-let g:airline#extensions#tabline#enabled = 1

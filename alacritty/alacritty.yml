@@ -41,24 +41,26 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Source Code Pro
+    # family: Source Code Pro
+    # family: IBM Plex Mono
+    family: Dank Mono
     # Style can be specified to pick a specific face.
     # style: Regular
 
   # The bold font face
   bold:
-    family: Menlo
+    family: Dank Mono
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: IBM Plex Mono
+    family: Dank Mono
     # Style can be specified to pick a specific face.
     # style: Italic
 
   # Point size of the font
-  size: 12.0
+  size: 13.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -87,7 +89,7 @@ render_timer: false
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: true
+# custom_cursor_colors: true
 
 # # Colors (One Dark)
 # colors:
@@ -181,78 +183,33 @@ custom_cursor_colors: true
 #     white:   '0xebdbb2'
 
 
-# # Colors (Pencil Dark)
-# colors:
-#   # Default Colors
-#   primary:
-#     background: '0x212121'
-#     foreground: '0xf1f1f1'
-#   # Normal colors
-#   normal:
-#     black:   '0x212121'
-#     red:     '0xc30771'
-#     green:   '0x10a778'
-#     yellow:  '0xa89c14'
-#     blue:    '0x008ec4'
-#     magenta: '0x523c79'
-#     cyan:    '0x20a5ba'
-#     white:   '0xe0e0e0'
-#   # Bright colors
-#   bright:
-#     black:   '0x212121'
-#     red:     '0xfb007a'
-#     green:   '0x5fd7af'
-#     yellow:  '0xf3e430'
-#     blue:    '0x20bbfc'
-#     magenta: '0x6855de'
-#     cyan:    '0x4fb8cc'
-#     white:   '0xf1f1f1'
-
-# falcon colorscheme for alacritty
-# by fenetikm, https://github.com/fenetikm/falcon
+# Colors (Pencil Dark)
 colors:
-  # Default colors
+  # Default Colors
   primary:
-    background: '0x0b0b1a'
-    foreground: '0xd4d4d9'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x282828'
-    cursor: '0xffefbf'
-
+    background: '0x212121'
+    foreground: '0xf1f1f1'
   # Normal colors
   normal:
-    black:   '0x0b0b1a'
-    red:     '0xff794c'
-    green:   '0x85a663'
-    yellow:  '0xffd966'
-    blue:    '0x8fa3bf'
-    magenta: '0xffac59'
-    cyan:    '0x85ccc0'
-    white:   '0xfdfdff'
-
+    black:   '0x212121'
+    red:     '0xc30771'
+    green:   '0x10a778'
+    yellow:  '0xa89c14'
+    blue:    '0x008ec4'
+    magenta: '0x523c79'
+    cyan:    '0x20a5ba'
+    white:   '0xe0e0e0'
   # Bright colors
   bright:
-    black:   '0x000002'
-    red:     '0xff4000'
-    green:   '0x598033'
-    yellow:  '0xffbf00'
-    blue:    '0x306cbf'
-    magenta: '0xff8000'
-    cyan:    '0x30bfa7'
-    white:   '0xd4d4d9'
+    black:   '0x212121'
+    red:     '0xfb007a'
+    green:   '0x5fd7af'
+    yellow:  '0xf3e430'
+    blue:    '0x20bbfc'
+    magenta: '0x6855de'
+    cyan:    '0x4fb8cc'
+    white:   '0xf1f1f1'
 
-  # Dim colors (Optional)
-  dim:
-    black:   '0x333333'
-    red:     '0xf2777a'
-    green:   '0x99cc99'
-    yellow:  '0xffcc66'
-    blue:    '0x6699cc'
-    magenta: '0xcc99cc'
-    cyan:    '0x66cccc'
-    white:   '0xdddddd'
 
 
 # Visual Bell
