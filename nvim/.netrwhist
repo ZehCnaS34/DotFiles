@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/alexandersanchez/Projects/exchange_widget_sites/sites/amazontrade'
+let g:netrw_dirhist_2='/Users/alexandersanchez/Projects/exchange_widget_sites/sites/amazontrade/src'
+let g:netrw_dirhist_3='/Users/alexandersanchez/Projects/exchange_widget_sites/src/modules/Workflow'
+let g:netrw_dirhist_4='/Users/alexandersanchez/Projects/connected-react-router'
+let g:netrw_dirhist_5='/Users/alexandersanchez/.config/nvim'
+let g:netrw_dirhist_6='/Users/alexandersanchez/Projects/DotFiles'
+let g:netrw_dirhist_7='/Users/alexandersanchez/Projects/DotFiles/tmux'

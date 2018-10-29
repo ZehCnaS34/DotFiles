@@ -48,7 +48,7 @@ filetype plugin indent on
 syntax enable
 set background=light
 set termguicolors
-colorscheme github
+" colorscheme github
 
 set t_Co=256
 if &term =~ '256color'
@@ -233,6 +233,6 @@ let $FZF_DEFAULT_COMMAND="ag -g ''"
 au BufWrite <buffer> call TrimSpaces()
 
 let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
+" let g:ale_fixers['javascript'] = ['prettier']
 " let g:ale_fix_on_save = 1
 
