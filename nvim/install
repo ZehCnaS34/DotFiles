@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from os import path
-import os 
+import os
 import subprocess
 
 src = path.join(os.path.abspath(os.curdir), 'nvim')

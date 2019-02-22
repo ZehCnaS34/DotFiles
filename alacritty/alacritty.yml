@@ -29,10 +29,16 @@ window:
 
   # Window decorations
   # Setting this to false will result in window without borders and title bar.
-  decorations: true
+  # decorations: true
+  decorations: full
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 8
+
+# cursor
+cursor:
+  style: Block
+  unfocused_hollow: true
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -60,7 +66,7 @@ font:
     # style: Italic
 
   # Point size of the font
-  size: 13.0
+  size: 15.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -74,10 +80,6 @@ font:
   glyph_offset:
     x: 0
     y: 0
-
-  # Scale the font size based on the monitor's DPI. This will lead to bigger text on HiDPI
-  # screens and make reading text a little easier.
-  scale_with_dpi: true
 
   # OS X only: use thin stroke font rendering. Thin strokes are suitable
   # for retina displays, but for non-retina you probably want this set to
@@ -268,6 +270,9 @@ mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
 
+  hide_when_typing: false
+
+
   # Faux Scrollback
   #
   # The `faux_scrollback_lines` setting controls the number
@@ -276,14 +281,14 @@ mouse:
   # scrolling for applications like `man`.
   #
   # To disable this completely, set `faux_scrollback_lines` to 0.
-  faux_scrollback_lines: 1
+  # faux_scrollback_lines: 1
+  faux_scrolling_lines: 1
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
 dynamic_title: true
 
-hide_cursor_when_typing: false
 
 # Style of the cursor
 #
@@ -291,10 +296,9 @@ hide_cursor_when_typing: false
 # - Block
 # - Underline
 # - Beam
-cursor_style: Block
+# cursor_style: Block
 
 # Whether the cursor should be a hollow block on window focus loss
-unfocused_hollow_cursor: true
 
 # Live config reload (changes require restart)
 live_config_reload: true
@@ -459,4 +463,5 @@ key_bindings:
   - { key: I,        mods: Alt,     chars: "\x1bi"                       }
   - { key: A,        mods: Alt,     chars: "\x1ba"                       }
   - { key: D,        mods: Alt,     chars: "\x1bd"                       }
+
 
