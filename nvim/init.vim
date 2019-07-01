@@ -11,27 +11,31 @@
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
+" Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
+" Plug 'fatih/vim-go'
 " Plug 'majutsushi/tagbar'
-Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
+" Plug 'mfukar/robotframework-vim'
+Plug 'w0rp/ale'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'yegappan/mru'
-Plug 'mfukar/robotframework-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'digitaltoad/vim-pug'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'flazz/vim-colorschemes'
+Plug 'flowtype/vim-flow'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kshenoy/vim-signature'
+" NOTE: This is the culprit that made switching windows SLOW
 Plug 'lilydjwg/colorizer'
-Plug 'fatih/vim-go'
+Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'sjl/gundo.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
@@ -40,10 +44,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'tyewang/vimux-jest-test'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'w0rp/ale'
-Plug 'scrooloose/nerdtree'
 Plug 'wincent/ferret'
 Plug 'wincent/loupe'
+Plug 'yegappan/mru'
 
 call plug#end()            " required
 
@@ -59,7 +62,10 @@ set termguicolors
 " colorscheme onedark
 " colorscheme solarized
 " colorscheme zenburn
-colorscheme peaksea
+" colorscheme peaksea
+" colorscheme github
+colorscheme solarized8_light_flat
+" colorscheme solarized8_dark_flat
 
 set t_Co=256
 if &term =~ '256color'
@@ -295,6 +301,9 @@ nnoremap ,e :call FzyCommand("rg  -l ''", ":e")<cr>
 nnoremap ,v :call FzyCommand("rg  -l ''", ":vs")<cr>
 nnoremap ,s :call FzyCommand("rg  -l ''", ":sp")<cr>
 
+nnoremap <Leader>j :cne<cr>
+nnoremap <Leader>k :cpre<cr>
+
 function! BreakArray()
   echo "Hello, World " . join(getpos("'<")[1:2], '-')
 endfunction
@@ -306,3 +315,4 @@ elseif executable('ag')
   let g:ackprg = 'ag --vimgrep --smart-case'
 endif
 
+let g:colorizer_maxlines = 1000
