@@ -6,3 +6,7 @@ emacs/elpa/
 emacs/*.data
 emacs/*.eld
 vim/undodir
+node_modules
+nvim/.netrwhist
+.DS_Store
+vim/view/*
