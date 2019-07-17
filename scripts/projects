@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+const minimist = require("minimist");
+const fs = require("fs");
+const path = require("path");
+const { configuration } = require("./atlas");
+
+const PROJECT_LOCATIONS = configuration.projectsLocations || [];
+
+const args = minimist(process.argv.slice(2));
+
+/**
+ * @param {string} p
+ */
+function processPath(p) {
+  if (args.filter || args.f) {
+    let filter;
+    if (args.f) {
+      filter = args.f;
+    } else {
+      filter = args.filter;
+    }
+    if (p.includes(filter)) {
+      console.log(p);
+    }
+  } else {
+    console.log(p);
+  }
+}
+
+
+for (const location of PROJECT_LOCATIONS) {
+  const projects = fs.readdirSync(location);
+  for (const node of projects) {
+    if (node.startsWith(".")) continue;
+    processPath(path.resolve(location, node));
+  }
+}

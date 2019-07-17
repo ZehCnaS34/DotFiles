@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+
+const minimist = require("minimist");
+const fs = require("fs");
+const path = require("path");
+const { configuration, workspacesPath } = require("./atlas");
+const cliSelect = require("cli-select");
+
+const PROJECT_LOCATIONS = configuration.projectsLocations || [];
+
+const args = minimist(process.argv.slice(2));
+
+const action = args._.shift();
+
+const imp = {
+  add
+}[action];
+
+if (!imp) {
+  console.log("Workspace: Unsupported action");
+  process.exit(1);
+}
+
+imp(...args._);
+
+function assertProjectExists(project) {
+  return fs.existsSync(project);
+}
+
+function assertWorkspaces() {
+  if (fs.existsSync(workspacesPath)) return;
+
+  fs.mkdirSync(workspacesPath);
+}
+
+function assertWorkspace(name) {
+  const workspacePath = path.resolve(workspacesPath, name)
+  if (fs.existsSync(workspacePath)) return;
+
+  fs.mkdirSync(workspacePath);
+}
+
+function assertLink(workspace, project) {
+  const projectName = path.basename(project);
+  const workspacePath = path.resolve(workspacesPath, workspace);
+  const workspaceProjectPath = path.resolve(workspacePath, projectName);
+  if (fs.existsSync(workspaceProjectPath)) return;
+  fs.symlinkSync(project, workspaceProjectPath);
+}
+
+function add(workspace, ...projects) {
+  if (!projects.every(project => {
+    const result = assertProjectExists(project)
+    if (!result) {
+      console.error(project + " does not exist.");
+    }
+    return result;
+
+  })) {
+    process.exit(1);
+    return;
+  }
+  assertWorkspaces();
+  assertWorkspace(workspace);
+  for (const project of projects) {
+    assertLink(workspace, project)
+  }
+}
