@@ -22,7 +22,7 @@ Plug 'digitaltoad/vim-pug'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'flowtype/vim-flow'
+" Plug 'flowtype/vim-flow'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -269,6 +269,10 @@ let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['scss'] = ['prettier']
 let g:ale_fixers['python'] = ['black']
 let g:ale_completion_enabled = 0
+let g:ale_open_list = 0
+
+let g:ale_linters = {}
+" let g:ale_linters['javascript'] = ['flow']
 
 inoremap ,ac <esc>:ALEComplete<cr>a
 nnoremap ,ad :ALEDocumentation<cr>
@@ -315,4 +319,4 @@ elseif executable('ag')
   let g:ackprg = 'ag --vimgrep --smart-case'
 endif
 
-let g:colorizer_maxlines = 1000
+let g:colorizer_maxlines = 50

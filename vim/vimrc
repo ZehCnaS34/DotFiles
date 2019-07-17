@@ -101,6 +101,11 @@ autocmd BufNewFile,BufReadPost Procfile set filetype=ruby
 nmap <c-\> :NERDTreeToggle<cr>
 nmap <m-\> :Tagbar<cr>
 
+"" Copy Paste
+nmap ,y "+y
+vmap ,y "+y
+
+
 nnore <Leader><Leader> :Commands<cr>
 nnore <C-p> :Files<space>.<cr>
 nnore <Leader>pf :Files<cr>
